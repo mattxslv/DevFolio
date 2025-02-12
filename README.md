@@ -22,15 +22,14 @@ This portfolio website showcases my development projects, skills, and profession
 
 ## Setup Instructions
 1. Clone the repository:
-   
-bash
-   git clone https://github.com/mattxslv/finance-tracker.git
+   ```bash
+   git clone https://github.com/mattxslv/DevFolio.git
    
 2. Install dependencies:
-bash
+   ```bash
    npm install
 3. Run Application
-     
-bash
+   ```bash
     npm start
+
 The app will run on http://localhost:3000
