@@ -8,7 +8,22 @@
   <!-- 
     - meta tags
   -->
-  <title>Devfolio</title>
+  <title>Matthew Jericho Silva - Full Stack Developer | DICT Philippines</title>
+  <meta name="description" content="Matthew Jericho Silva - Full Stack Developer at DICT Philippines. Government projects include PhilHealth Transparency Portal and Startup PH Website. Expert in React, Node.js, Python, and modern web technologies.">
+  <meta name="keywords" content="Matthew Silva, Full Stack Developer, DICT Philippines, Government Developer, React, Node.js, Python, Web Development, PhilHealth, Startup PH">
+  <meta name="author" content="Matthew Jericho P. Silva">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Matthew Jericho Silva - Full Stack Developer">
+  <meta property="og:description" content="Full Stack Developer at DICT Philippines specializing in government web applications and modern technologies.">
+  <meta property="og:image" content="./assets/images/profile.png">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matthew Jericho Silva - Full Stack Developer">
+  <meta name="twitter:description" content="Full Stack Developer at DICT Philippines specializing in government web applications.">
+  <meta name="twitter:image" content="./assets/images/profile.png">
 
 
   <!-- 
@@ -36,9 +51,70 @@
   -->
   <link rel="stylesheet" href="./css/style.css">
 
+  <!-- 
+    - structured data markup
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Matthew Jericho P. Silva",
+    "jobTitle": "Computer Programmer I",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Department of Information and Communications Technology of the Philippines"
+    },
+    "description": "Full Stack Developer at DICT Philippines, developing government web applications and digital transformation solutions.",
+    "url": "https://mattxslv.github.io/DevFolio/",
+    "sameAs": [
+      "https://www.linkedin.com/in/mattxslv/",
+      "https://github.com/mattxslv",
+      "https://x.com/mattxslv",
+      "https://www.instagram.com/mattxslv/"
+    ],
+    "email": "matthewsilva01032@gmail.com",
+    "telephone": "+639760901308",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Quezon City",
+      "addressRegion": "Metro Manila",
+      "addressCountry": "Philippines"
+    },
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "Polytechnic University of the Philippines"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Bachelor of Science in Information Technology",
+        "credentialCategory": "degree"
+      },
+      {
+        "@type": "EducationalOccupationalCredential", 
+        "name": "National Certificate II - Computer Systems Servicing",
+        "credentialCategory": "certificate"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "National Certificate III - Java Programming", 
+        "credentialCategory": "certificate"
+      }
+    ]
+  }
+  </script>
+
 </head>
 
 <body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Loading Portfolio...</p>
+    </div>
+  </div>
 
   <!-- 
     - #TOP BAR
@@ -72,6 +148,14 @@
       -->
 
       <section class="section hero">
+        <div class="particles-container">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
         <div class="container">
 
           <figure class="hero-banner img-holder" style="--width: 240; --height: 240;">
@@ -84,7 +168,7 @@
             <h1 class="display-small">Matthew Jericho P. Silva</h1>
 
             <p class="body-large section-text">
-              Full Stack Developer 
+              <span id="typing-text">Full Stack Developer | Government Technology Specialist</span>
             </p>
 
             <div class="btn-wrapper">
@@ -101,6 +185,14 @@
                 <span class="material-symbols-outlined" aria-hidden="true"> call </span>
 
                 <span class="label-large">+63 976 090 1308</span>
+
+                <div class="state-layer"></div>
+              </a>
+
+              <a href="./assets/Resume_Silva.docx.pdf" class="chip" download="Resume_Silva.pdf" style="background-color: var(--primary); color: var(--on-primary);">
+                <span class="material-symbols-outlined" aria-hidden="true"> download </span>
+
+                <span class="label-large">Download Resume</span>
 
                 <div class="state-layer"></div>
               </a>
@@ -126,7 +218,8 @@
 
 
           <p class="body-medium card-text" style="text-align: center;">
-            A dedicated tech professional with a strong passion for software engineering and a solid foundation in technology.        </p>
+            Software Engineer at DICT Philippines, developing government web applications and digital transformation solutions. Passionate about leveraging technology to improve public services.
+          </p>
         
 
           <ul class="about-list">
@@ -191,14 +284,58 @@
 
 <div class="project-list">
 
+    <!-- Professional Projects -->
+    <div class="card">
+    <figure class="card-banner img-holder" style="--width: 334; --height: 180;">
+      <img src="./assets/images/philhealth desktop.png" alt="PhilHealth Transparency Portal" width="334" height="180" class="img-cover">
+    </figure>
+    <div class="card-content">
+      <span class="label-large card-subtitle">Government Project</span>
+      <h3 class="title-large card-title">PhilHealth Transparency Portal</h3>
+      <p class="body-medium card-text">Government transparency platform providing public access to healthcare fund information and institutional data. Enhances accountability and public trust through digital transparency.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Government Portal</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Public Service</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Data Transparency</span>
+      </div>
+      <a href="https://philhealth.open.gov.ph" class="btn" target="_blank" rel="noopener noreferrer">Visit Live Site</a>
+    </div>
+  </div>
+
+    <div class="card">
+    <figure class="card-banner img-holder" style="--width: 334; --height: 180;">
+      <img src="./assets/images/startup desktop.png" alt="Startup PH Website" width="334" height="180" class="img-cover">
+    </figure>
+    <div class="card-content">
+      <span class="label-large card-subtitle">Government Project</span>
+      <h3 class="title-large card-title">Startup PH Website</h3>
+      <p class="body-medium card-text">Official government platform supporting the Philippine startup ecosystem. Provides resources, information, and services for entrepreneurs and startup companies nationwide.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Startup Ecosystem</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Business Portal</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Government Services</span>
+      </div>
+      <a href="https://startup.gov.ph" class="btn" target="_blank" rel="noopener noreferrer">Visit Live Site</a>
+    </div>
+  </div>
+
     <div class="card">
     <figure class="card-banner img-holder" style="--width: 334; --height: 180;">
       <img src="./assets/images/phoenix.png" alt="Project Phoenix – GPT-Powered Chatbot" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Phoenix - GPT-Powered Chatbot</h3>
-      <a href="https://phoenix-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">AI-powered conversational chatbot with natural language processing capabilities. Features modern UI/UX and intelligent response generation.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">React</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">OpenAI API</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">JavaScript</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://phoenix-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/phoenix" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -207,9 +344,18 @@
       <img src="./assets/images/taskbotai.png" alt="Cook.io – Recipe Search App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">TaskBot AI – Smart Task Manager</h3>
-      <a href="https://taskbotai-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Intelligent task management application with AI-powered features for productivity optimization and automated task organization.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">React</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Node.js</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">AI Integration</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://taskbotai-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/taskbotai" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -218,9 +364,18 @@
       <img src="./assets/images/project-4.png" alt="Weatherly - Live Weather App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Weatherly - Live Weather App</h3>
-      <a href="https://Weatherly-silva.netlify.app" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Real-time weather application with location-based forecasts and detailed meteorological information.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">JavaScript</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Weather API</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Responsive</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://Weatherly-silva.netlify.app" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/weatherly" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -229,9 +384,18 @@
       <img src="./assets/images/project-5.png" alt="Tvflix - Netflix Clone 2.0" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Tvflix - Netflix Clone 2.0</h3>
-      <a href="https://tvflix-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Modern streaming platform clone with movie browsing, search functionality, and responsive design.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">React</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Movie API</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">CSS3</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://tvflix-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/tvflix" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -241,9 +405,18 @@
       <img src="./assets/images/project-1.png" alt="Pixstock - Stock Media App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Pixstock - Stock Media App</h3>
-      <a href="https://pixstock-silva.netlify.app" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Stock photography platform with search, filtering, and high-quality image browsing capabilities.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">JavaScript</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Image API</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Responsive</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://pixstock-silva.netlify.app" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/pixstock" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -257,9 +430,18 @@
       <img src="./assets/images/cook.io.png" alt="Cook.io – Recipe Search App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Cook.io – Recipe Search App</h3>
-      <a href="https://cookio-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Recipe discovery platform with ingredient-based search, cooking instructions, and nutritional information.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">React</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Recipe API</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">CSS3</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://cookio-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/cookio" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -268,9 +450,18 @@
       <img src="./assets/images/gamics.png" alt="Finance Tracker - Budgeting Web App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Gamics - Match and Build App</h3>
-      <a href="https://gamics-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Interactive gaming application with match-making features and building mechanics for engaging user experience.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">JavaScript</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Game Logic</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Interactive</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://gamics-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/gamics" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -279,9 +470,18 @@
       <img src="./assets/images/finance_tracker.png" alt="Finance Tracker - Budgeting Web App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Finance Tracker - Budgeting App</h3>
-      <a href="https://silva-finance-tracker.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Personal finance management tool with expense tracking, budget planning, and financial analytics.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">React</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Local Storage</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Charts</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://silva-finance-tracker.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/finance-tracker" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -290,9 +490,18 @@
       <img src="./assets/images/notekeeper.png" alt="Finance Tracker - Budgeting Web App" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Notekeeper - Note-taking App</h3>
-      <a href="https://notekeeper-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">Digital note-taking application with organization features, search functionality, and data persistence.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">JavaScript</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Local Storage</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">CRUD</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://notekeeper-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/notekeeper" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
 
@@ -301,9 +510,18 @@
       <img src="./assets/images/gitfinder.png" alt="Gitfinder – GitHub Profile Finder" width="334" height="180" class="img-cover">
     </figure>
     <div class="card-content">
-      <span class="label-large card-subtitle">Web App</span>
+      <span class="label-large card-subtitle">Personal Project</span>
       <h3 class="title-large card-title">Gitfinder – GitHub Profile Finder</h3>
-      <a href="https://gitfinder-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+      <p class="body-medium card-text">GitHub profile search tool displaying user information, repositories, and development statistics.</p>
+      <div class="tech-stack" style="margin: 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.25rem;">
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">JavaScript</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">GitHub API</span>
+        <span class="tech-badge" style="background: var(--surface-container); padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Responsive</span>
+      </div>
+      <div class="btn-wrapper" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://gitfinder-silva.netlify.app/" class="btn" target="_blank" rel="noopener noreferrer">Go to Live Demo</a>
+        <a href="https://github.com/mattxslv/gitfinder" class="btn" target="_blank" rel="noopener noreferrer" style="background: var(--surface-container); color: var(--on-surface);">View Code</a>
+      </div>
     </div>
   </div>
    </div>
@@ -330,8 +548,16 @@
 
       <li class="resume-item">
         <div class="resume-card">
+          <p class="body-large">Department of Information and Communications Technology of the Philippines</p>
+          <span class="label-medium card-subtitle">Oct. 14 2025 - Present</span>
+          <span class="body-medium card-text">Computer Programmer I</span>
+        </div>
+      </li>
+
+      <li class="resume-item">
+        <div class="resume-card">
           <p class="body-large">KASAGANA-KA Cooperative</p>
-          <span class="label-medium card-subtitle">2024 - 2024</span>
+          <span class="label-medium card-subtitle">Feb. 2025 – March 2025</span>
           <span class="body-medium card-text">IT System Developer</span>
         </div>
       </li>
@@ -339,7 +565,7 @@
             <li class="resume-item">
         <div class="resume-card">
           <p class="body-large">RGS Global Solutions</p>
-          <span class="label-medium card-subtitle">2023 - 2023</span>
+          <span class="label-medium card-subtitle">March 2023 – July 2023</span>
           <span class="body-medium card-text">IT Support</span>
         </div>
       </li>
@@ -352,7 +578,7 @@
       <li class="resume-item">
         <div class="resume-card">
           <p class="body-large">Polytechnic University of the Philippines</p>
-          <span class="label-medium card-subtitle">Expected October 2025</span>
+          <span class="label-medium card-subtitle">2023 - 2025</span>
           <span class="body-medium card-text">Bachelor of Science in Information Technology</span>
         </div>
       </li>
@@ -411,112 +637,125 @@
 
 <h2 class="section-title title-small" style="font-weight: bold;">Skills and Technologies</h2>
 
-              <ul class="resume-bottom-list">
+            <h3 class="title-medium" style="margin-block-end: 20px;">Frontend</h3>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/html5.svg" width="28" height="28" loading="lazy" alt="HTML5" class="icon">
+            <ul class="resume-bottom-list">
 
-                  <span class="label-medium">HTML5</span>
-                </li>
+              <li class="resume-bottom-item">
+                <img src="./assets/images/html5.svg" width="28" height="28" loading="eager" alt="HTML5" class="icon" style="display: inline-block;" onload="console.log('HTML5 icon loaded')" onerror="console.log('HTML5 failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🌐</span>
+                <span class="label-medium">HTML5</span>
+              </li>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/css3.svg" width="28" height="28" loading="lazy" alt="CSS3" class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/css3.svg" width="28" height="28" loading="eager" alt="CSS3" class="icon" style="display: inline-block;" onload="console.log('CSS3 icon loaded')" onerror="console.log('CSS3 failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🎨</span>
+                <span class="label-medium">CSS3</span>
+              </li>
 
-                  <span class="label-medium">CSS3</span>
-                </li>
+              <li class="resume-bottom-item">
+                <img src="./assets/images/javascript.svg" width="28" height="28" loading="eager" alt="JavaScript" class="icon" style="display: inline-block;" onload="console.log('JS icon loaded')" onerror="console.log('JS failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">⚡</span>
+                <span class="label-medium">JavaScript</span>
+              </li>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/javascript.svg" width="28" height="28" loading="lazy" alt="JavaScript"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/react.js.svg" width="28" height="28" loading="eager" alt="React.js" class="icon" style="display: inline-block;" onload="console.log('React icon loaded')" onerror="console.log('React failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">⚛️</span>
+                <span class="label-medium">React.js</span>
+              </li>
 
-                  <span class="label-medium">JavaScript</span>
-                </li>
+            </ul>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/react.js.svg" width="28" height="28" loading="lazy" alt="React.js"
-                    class="icon">
+            <h3 class="title-medium" style="margin-block: 20px;">Backend</h3>
 
-                  <span class="label-medium">React.js</span>
-                </li>
+            <ul class="resume-bottom-list">
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/node.js.svg" width="28" height="28" loading="lazy" alt="Node.js"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/node.js.svg" width="28" height="28" loading="eager" alt="NodeJS" class="icon" style="display: inline-block;" onload="console.log('NodeJS icon loaded')" onerror="console.log('NodeJS failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🟢</span>
+                <span class="label-medium">Node.js</span>
+              </li>
 
-                  <span class="label-medium">Node.js</span>
-                </li>
+              <li class="resume-bottom-item">
+                <img src="./assets/images/java.svg" width="28" height="28" loading="eager" alt="Java" class="icon" style="display: inline-block;" onload="console.log('Java icon loaded')" onerror="console.log('Java failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">☕</span>
+                <span class="label-medium">Java</span>
+              </li>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/java.svg" width="28" height="28" loading="lazy" alt="Java"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/php.svg" width="28" height="28" loading="eager" alt="PHP" class="icon" style="display: inline-block;" onload="console.log('PHP icon loaded')" onerror="console.log('PHP failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🐘</span>
+                <span class="label-medium">PHP</span>
+              </li>
 
-                  <span class="label-medium">Java</span>
-                </li>
+              <li class="resume-bottom-item">
+                <img src="./assets/images/python.svg" width="28" height="28" loading="eager" alt="Python" class="icon" style="display: inline-block;" onload="console.log('Python icon loaded')" onerror="console.log('Python failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🐍</span>
+                <span class="label-medium">Python</span>
+              </li>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/php.svg" width="28" height="28" loading="lazy" alt="PHP"
-                    class="icon">
+            </ul>
 
-                  <span class="label-medium">PHP</span>
-                </li>
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/python.svg" width="28" height="28" loading="lazy" alt="Python"
-                    class="icon">
+            <h3 class="title-medium" style="margin-block: 20px;">Database</h3>
 
-                  <span class="label-medium">Python</span>
-                </li>
+            <ul class="resume-bottom-list">
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/postgresql.svg" width="28" height="28" loading="lazy" alt="PostgreSQL"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/postgresql.svg" width="28" height="28" loading="eager" alt="PostgreSQL" class="icon" style="display: inline-block;" onload="console.log('PostgreSQL icon loaded')" onerror="console.log('PostgreSQL failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🐘</span>
+                <span class="label-medium">PostgreSQL</span>
+              </li>
 
-                  <span class="label-medium">PostgreSQL</span>
-                </li>
+              <li class="resume-bottom-item">
+                <img src="./assets/images/mysql.svg" width="28" height="28" loading="eager" alt="MySQL" class="icon" style="display: inline-block;" onload="console.log('MySQL icon loaded')" onerror="console.log('MySQL failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🐬</span>
+                <span class="label-medium">MySQL</span>
+              </li>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/mysql.svg" width="28" height="28" loading="lazy" alt="mySQL"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/github.svg" width="28" height="28" loading="eager" alt="GitHub" class="icon" style="display: inline-block;" onload="console.log('GitHub icon loaded')" onerror="console.log('GitHub failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🐙</span>
+                <span class="label-medium">Github</span>
+              </li>
 
-                  <span class="label-medium">MySQL</span>
-                </li>
+              <li class="resume-bottom-item">
+                <img src="./assets/images/VS_code.svg" width="28" height="28" loading="eager" alt="VS Code" class="icon" style="display: inline-block;" onload="console.log('VS Code icon loaded')" onerror="console.log('VS Code failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">💻</span>
+                <span class="label-medium">VS Code</span>
+              </li>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/github.svg" width="28" height="28" loading="lazy" alt="GitHub" class="icon">
+            </ul>
 
-                  <span class="label-medium">GitHub</span>
-                </li>
+            <h3 class="title-medium" style="margin-block: 20px;">Others</h3>
 
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/VS_code.svg" width="28" height="28" loading="lazy" alt="VS Code"
-                    class="icon">
+            <ul class="resume-bottom-list">
 
-                  <span class="label-medium">VS Code</span>
-                </li>
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/docker.svg" width="28" height="28" loading="lazy" alt="Figma"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/docker.svg" width="28" height="28" loading="eager" alt="Docker" class="icon" style="display: inline-block;" onload="console.log('Docker icon loaded')" onerror="console.log('Docker failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">🐳</span>
+                <span class="label-medium">Docker</span>
+              </li>
 
-                  <span class="label-medium">Docker</span>
-                </li>
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/postman.svg" width="28" height="28" loading="lazy" alt="Figma"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/postman.svg" width="28" height="28" loading="eager" alt="Postman" class="icon" style="display: inline-block;" onload="console.log('Postman icon loaded')" onerror="console.log('Postman failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">📮</span>
+                <span class="label-medium">Postman</span>
+              </li>
 
-                  <span class="label-medium">Postman</span>
-                </li>
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/aws.svg" width="28" height="28" loading="lazy" alt="Figma"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/aws.svg" width="28" height="28" loading="eager" alt="AWS" class="icon" style="display: inline-block;" onload="console.log('AWS icon loaded')" onerror="console.log('AWS failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">☁️</span>
+                <span class="label-medium">AWS</span>
+              </li>
 
-                  <span class="label-medium">AWS</span>
-                </li>
-                <li class="resume-bottom-item">
-                  <img src="./assets/images/ruby.svg" width="28" height="28" loading="lazy" alt="Figma"
-                    class="icon">
+              <li class="resume-bottom-item">
+                <img src="./assets/images/ruby.svg" width="28" height="28" loading="eager" alt="Ruby" class="icon" style="display: inline-block;" onload="console.log('Ruby icon loaded')" onerror="console.log('Ruby failed, using fallback'); this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span class="icon" style="font-size: 28px; display: none;">💎</span>
+                <span class="label-medium">Ruby</span>
+              </li>
 
-                  <span class="label-medium">Ruby</span>
-
-              </ul>
+            </ul>
 
             </div>
           </section>
@@ -596,6 +835,12 @@
 
                 <div class="social-list">
 
+                  <a href="https://www.linkedin.com/in/mattxslv/" class="social-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" style="fill: var(--on-surface-variant)" />
+                    </svg>
+                  </a>
+
                   <a href="https://x.com/mattxslv" class="social-item">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -656,19 +901,21 @@
 
                 <h3 class="title-large">Let’s Work Together.</h3>
 
-                <form action="https://formsubmit.co/matthewsilva01032@gmail.com" method="POST" class="input-wrapper">
+                <form action="https://formsubmit.co/matthewsilva01032@gmail.com" method="POST" class="input-wrapper" id="contact-form">
 
                   <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_next" value="https://mattxslv.github.io/DevFolio/thank-you.html">
+                  <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
 
-                  <input type="text" name="name" placeholder="Name" required class="input-field">
+                  <input type="text" name="name" placeholder="Name" required class="input-field" minlength="2" maxlength="50">
 
                   <input type="email" name="email" placeholder="Email" required class="input-field">
 
-                  <input type="text" name="subject" placeholder="Subject" class="input-field">
+                  <input type="text" name="subject" placeholder="Subject" class="input-field" maxlength="100">
 
-                  <textarea name="message" placeholder="Message" required class="textarea"></textarea>
+                  <textarea name="message" placeholder="Message" required class="textarea" minlength="10" maxlength="500"></textarea>
 
-                  <button class="btn" type="submit">
+                  <button class="btn" type="submit" id="submit-btn">
                     <span class="label-large">Send Message</span>
 
                     <div class="state-layer"></div>
@@ -699,7 +946,7 @@
   <footer class="footer">
     <div class="container">
 
-      <p class="body-medium">Copyright 2024 mattxslv. All Rights Reserved.</p>
+      <p class="body-medium">Copyright 2025 mattxslv. All Rights Reserved.</p>
 
     </div>
   </footer>
