@@ -2,7 +2,7 @@
 A personal portfolio website built with JavaScript, React, HTML, and CSS.
 
 ## Demo
-Check out the live version of the app here: [Live Demo](https://devfolio-silva.netlify.app/)
+Check out the live version of the app here: [Live Demo](https://devfolio-silva.vercel.app/)
 
 
 ## Description
