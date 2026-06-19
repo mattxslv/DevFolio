@@ -229,3 +229,22 @@ $tabBtn.forEach(item => {
 
   });
 });
+
+
+/**
+ * Clickable card banners — "👁 View Project" overlay navigates to the card's primary link
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card-banner').forEach(banner => {
+    const card = banner.closest('.card');
+    if (!card) return;
+    const primaryLink = card.querySelector('.btn');
+    if (!primaryLink) return;
+
+    banner.style.cursor = 'pointer';
+    banner.addEventListener('click', () => {
+      window.open(primaryLink.href, '_blank', 'noopener,noreferrer');
+    });
+  });
+});
