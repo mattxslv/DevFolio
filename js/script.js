@@ -24,12 +24,17 @@ syncThemeIcon();
 
 themeBtn.addEventListener("click", () => {
   const toggle = () => {
+    $HTML.classList.add("theme-switching");
     applyTheme();
     syncThemeIcon();
+  };
+  const settle = () => {
+    setTimeout(() => $HTML.classList.remove("theme-switching"), 100);
   };
 
   if (!document.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     toggle();
+    settle();
     return;
   }
 
@@ -38,12 +43,14 @@ themeBtn.addEventListener("click", () => {
   const y = rect.top + rect.height / 2;
   const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
 
-  document.startViewTransition(toggle).ready.then(() => {
+  const transition = document.startViewTransition(toggle);
+  transition.ready.then(() => {
     document.documentElement.animate(
       { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
       { duration: 700, easing: "cubic-bezier(0.16, 1, 0.3, 1)", pseudoElement: "::view-transition-new(root)" }
     );
   });
+  transition.finished.then(settle).catch(settle);
 });
 
 /**

@@ -1645,6 +1645,12 @@ a.contact-value:hover {
   z-index: 2;
 }
 
+/* Kill color transitions while switching themes so the sweep doesn't flicker.
+   The theme toggle icon keeps its morph animation. */
+html.theme-switching *:not(.theme-btn):not(.theme-btn *) {
+  transition: none !important;
+}
+
 /*=============================================
   REDUCED MOTION
 =============================================*/

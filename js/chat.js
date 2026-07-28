@@ -704,9 +704,18 @@
     return `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m-6 6h20"/></svg>`;
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildWidget);
+  // Build the widget only after the page has fully loaded and the
+  // preloader has faded, then pop the button in.
+  function initWidget() {
+    setTimeout(() => {
+      buildWidget();
+      document.getElementById('chat-btn').classList.add('chat-btn-enter');
+    }, 1100);
+  }
+
+  if (document.readyState === 'complete') {
+    initWidget();
   } else {
-    buildWidget();
+    window.addEventListener('load', initWidget);
   }
 })();
