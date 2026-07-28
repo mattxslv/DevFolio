@@ -1,35 +1,33 @@
 # Devfolio
-A personal portfolio website built with JavaScript, React, HTML, and CSS.
+A personal portfolio website built with HTML, CSS, and vanilla JavaScript.
 
 ## Demo
 Check out the live version of the app here: [Live Demo](https://devfolio-silva.vercel.app/)
 
 
 ## Description
-This portfolio website showcases my development projects, skills, and professional experiences. It provides a clear, user-friendly interface for potential clients or employers to view my work, learn about my expertise, and contact me. The site is built using React for dynamic updates and HTML/CSS for the structure and styling.
+This portfolio website showcases my development projects, skills, and professional experiences - including government platforms built at DICT Philippines such as the ASEAN AI Summit Registration Platform, PEMEDES Licensing Portal, PhilHealth Transparency Portal, and Startup PH.
 
 ## Features
-- Display various projects, each with a link to the live website.
-- View a summary of my skills and technologies used.
-- Responsive design for mobile and desktop use.
-- Easy navigation to contact information and social media links.
+- Modern single-page design with animated hero, gradient orbs, and typing effect.
+- Filterable project grid (All / Government / Personal) with 3D tilt hover effects.
+- Scroll-triggered reveal animations, animated stat counters, and a skills marquee.
+- Experience and education timelines with certifications.
+- Dark / light theme toggle (persisted) and fully responsive layout with mobile menu.
+- Contact form powered by EmailJS, plus direct contact and social links.
 
 ## Technologies Used
-- JavaScript
-- React
-- HTML
-- CSS
+- HTML5
+- CSS3 (custom properties, animations)
+- JavaScript (ES6+, Intersection Observer)
+- EmailJS
 
 ## Setup Instructions
 1. Clone the repository:
    ```bash
    git clone https://github.com/mattxslv/DevFolio.git
-   
-2. Install dependencies:
+   ```
+2. Open `index.html` directly in a browser, or serve the folder with any static server:
    ```bash
-   npm install
-3. Run Application
-   ```bash
-    npm start
-
-The app will run on http://localhost:3000
+   npx serve .
+   ```
