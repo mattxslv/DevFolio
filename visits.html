@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visits</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: ui-sans-serif, system-ui, sans-serif; background: #0b0d12; color: #e6e8ee; padding: clamp(16px, 4vw, 40px) clamp(12px, 3vw, 24px); }
+    .wrap { max-width: 1500px; margin: 0 auto; }
+    header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+    h1 { font-size: clamp(18px, 3vw, 24px); letter-spacing: -0.01em; }
+    .sub { color: #7b8496; font-size: 13px; }
+    a.back { color: #7ea2ff; font-size: 13px; text-decoration: none; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 22px; }
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat.accent { grid-column: 1 / -1; }
+    }
+    .stat { background: linear-gradient(180deg, #151a23, #11151d); border: 1px solid #232b3a; border-radius: 12px; padding: 14px 16px; }
+    .stat p { font-size: 11px; color: #7b8496; text-transform: uppercase; letter-spacing: 0.1em; }
+    .stat strong { font-size: clamp(20px, 3vw, 28px); font-weight: 700; }
+    .stat.accent { border-color: #31427a; background: linear-gradient(180deg, #17203a, #121828); }
+
+    .breakdowns { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 26px; }
+    .panel { background: #12151d; border: 1px solid #222836; border-radius: 12px; padding: 14px 16px; }
+    .panel h2 { font-size: 11px; color: #7b8496; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 13px; }
+    .bar .k { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #cdd3df; }
+    .bar .n { color: #7b8496; font-variant-numeric: tabular-nums; }
+
+    h3.list-title { font-size: 11px; color: #7b8496; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 10px; }
+    .visit { background: #12151d; border: 1px solid #222836; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
+    .visit .top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .visit .who { font-size: 13.5px; font-weight: 600; }
+    .visit .when { color: #7b8496; font-size: 12px; white-space: nowrap; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chip { font-size: 11px; padding: 2px 9px; border-radius: 99px; border: 1px solid #2a3244; background: #171c28; color: #aeb6c6; }
+    .chip.new { border-color: #2c4a33; background: #14231a; color: #7fd39a; }
+    .chip.ret { border-color: #4a3d2c; background: #231d14; color: #d3b57f; }
+    .muted { color: #7b8496; }
+    #status { color: #7b8496; font-size: 13px; }
+    .del { background: none; border: 0; color: #56607444; cursor: pointer; font-size: 15px; padding: 0 2px; line-height: 1; }
+    .visit:hover .del { color: #e08894; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Portfolio visits</h1>
+        <p class="sub" id="range"></p>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <button id="clearAll" style="background:#2a1518;border:1px solid #5c2630;color:#e08894;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer">Clear all logs</button>
+        <a class="back" href="/">&larr; Back to portfolio</a>
+      </div>
+    </header>
+
+    <div id="content" hidden>
+      <div class="stats">
+        <div class="stat accent"><p>Total visits</p><strong id="total">-</strong></div>
+        <div class="stat"><p>Unique visitors</p><strong id="unique_visitors">-</strong></div>
+        <div class="stat"><p>Last 24h</p><strong id="last24h">-</strong></div>
+        <div class="stat"><p>Last 7 days</p><strong id="last7d">-</strong></div>
+        <div class="stat"><p>Last 30 days</p><strong id="last30d">-</strong></div>
+        <div class="stat"><p>Resume downloads</p><strong id="resume_dl">0</strong></div>
+        <div class="stat"><p>Avg time on page</p><strong id="avg_time">-</strong></div>
+      </div>
+
+      <div class="breakdowns">
+        <div class="panel"><h2>Countries</h2><div id="countries"></div></div>
+        <div class="panel"><h2>Referrers</h2><div id="referrers"></div></div>
+        <div class="panel"><h2>Devices</h2><div id="devices"></div></div>
+        <div class="panel"><h2>Browsers</h2><div id="browsers"></div></div>
+        <div class="panel"><h2>Actions</h2><div id="actions"></div></div>
+      </div>
+
+      <h3 class="list-title">Latest actions</h3>
+      <div id="eventlist" style="margin-bottom: 26px"></div>
+
+      <h3 class="list-title">Latest visits</h3>
+      <div id="list"></div>
+    </div>
+    <p id="status">Loading&hellip;</p>
+  </div>
+
+  <script>
+    localStorage.setItem('visits_owner', '1');
+    const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const FLAG = (cc) => cc && /^[A-Z]{2}$/i.test(cc)
+      ? String.fromCodePoint(...[...cc.toUpperCase()].map(c => 127397 + c.charCodeAt(0)))
+      : '';
+    const fmt = (iso) => new Date(iso).toLocaleString('en-PH', { month: 'short', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+
+    const countryName = (cc) => {
+      if (!cc || !/^[A-Z]{2}$/i.test(cc)) return null;
+      try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(cc.toUpperCase()); } catch { return cc; }
+    };
+    function bars(el, rows, isCountry) {
+      el.innerHTML = rows.map(r => `
+        <div class="bar">
+          <span class="k" title="${esc(r.k)}">${isCountry ? (FLAG(r.k) ? FLAG(r.k) + ' ' : '') + esc(countryName(r.k) || 'Unknown') : esc(r.k)}</span>
+          <span class="n">${r.n}</span>
+        </div>`).join('') || '<p class="muted" style="font-size:12px">No data yet</p>';
+    }
+
+    async function load() {
+      const res = await fetch('/api/visits');
+      if (!res.ok) { document.getElementById('status').textContent = 'Failed to load.'; return; }
+      const data = await res.json();
+      document.getElementById('status').textContent = '';
+      document.getElementById('content').hidden = false;
+
+      for (const k of ['total', 'unique_visitors', 'last24h', 'last7d', 'last30d'])
+        document.getElementById(k).textContent = data.totals[k] ?? 0;
+
+      bars(document.getElementById('countries'), data.topCountries, true);
+      bars(document.getElementById('referrers'), data.topReferrers);
+      bars(document.getElementById('devices'), data.devices);
+      bars(document.getElementById('browsers'), data.browsers);
+
+      const EVENT_LABELS = { resume_download: 'Resume download', project_click: 'Project click', chat_open: 'Chat opened', chat_lead: 'Work-with-me lead', contact_click: 'Contact click' };
+      bars(document.getElementById('actions'), (data.eventTotals || []).map(r => ({ k: EVENT_LABELS[r.k] || r.k, n: r.n })));
+      const resumeRow = (data.eventTotals || []).find(r => r.k === 'resume_download');
+      document.getElementById('resume_dl').textContent = resumeRow ? resumeRow.n : 0;
+      if (data.engagement && data.engagement.avg_seconds) {
+        const s2 = data.engagement.avg_seconds;
+        document.getElementById('avg_time').textContent = s2 >= 60 ? Math.floor(s2 / 60) + 'm ' + (s2 % 60) + 's' : s2 + 's';
+      }
+
+      document.getElementById('eventlist').innerHTML = (data.events || []).filter(ev => ev.type !== 'engagement').slice(0, 30).map(ev => `
+        <div class="visit">
+          <div class="top">
+            <span class="who">${esc(EVENT_LABELS[ev.type] || ev.type)}${ev.detail ? ' &middot; <span class="muted">' + esc(ev.detail) + '</span>' : ''}</span>
+            <span class="when">${fmt(ev.ts)} <button class="del" data-eid="${ev.id}" title="Delete this log">&times;</button></span>
+          </div>
+        </div>`).join('') || '<p class="muted" style="font-size:13px">No actions yet - resume downloads, project clicks, and chat opens will appear here.</p>';
+
+      if (data.visits.length) {
+        const oldest = data.visits[data.visits.length - 1].ts;
+        document.getElementById('range').textContent = `Showing ${data.visits.length} visits since ${fmt(oldest)}`;
+      }
+
+      const seen = {};
+      for (let i = data.visits.length - 1; i >= 0; i--) {
+        const v = data.visits[i];
+        if (v.visitor_id) { v._returning = seen[v.visitor_id] || false; seen[v.visitor_id] = true; }
+      }
+
+      document.getElementById('list').innerHTML = data.visits.map(v => {
+        const place = [v.city, v.region, countryName(v.country)].filter(Boolean).join(', ') || (v.timezone ? 'Somewhere in ' + v.timezone.replace('_', ' ') : '');
+        const ref = v.referrer ? v.referrer.replace(/^https?:\/\//, '') : '';
+        return `
+        <div class="visit">
+          <div class="top">
+            <span class="who">${FLAG(v.country)} ${esc(place) || 'Location unavailable'}</span>
+            <span class="when">${fmt(v.ts)} <button class="del" data-id="${v.id}" title="Delete this log">&times;</button></span>
+          </div>
+          <div class="meta">
+            ${v.visitor_id ? `<span class="chip ${v._returning ? 'ret' : 'new'}">${v._returning ? 'returning' : 'new'} visitor${+v.visitor_visits > 1 ? ' &middot; ' + v.visitor_visits + ' visits' : ''}</span>` : ''}
+            ${v.isp ? `<span class="chip">${esc(v.isp)}</span>` : ''}
+            <span class="chip">${esc(v.device || '?')}</span>
+            ${v.browser ? `<span class="chip">${esc(v.browser)}${v.os ? ' &middot; ' + esc(v.os) : ''}</span>` : ''}
+            ${v.screen ? `<span class="chip">${esc(v.screen)}</span>` : ''}
+            ${v.language ? `<span class="chip">${esc(v.language)}</span>` : ''}
+            ${v.timezone ? `<span class="chip">${esc(v.timezone)}</span>` : ''}
+            <span class="chip">${esc(v.path || '/')}</span>
+            <span class="chip">${ref ? 'from ' + esc(ref) : 'direct'}</span>
+          </div>
+        </div>`;
+      }).join('') || '<p class="muted">No visits logged yet.</p>';
+    }
+    document.addEventListener('click', async (e) => {
+      if (e.target.classList && e.target.classList.contains('del')) {
+        const payload = e.target.dataset.id ? { id: e.target.dataset.id } : { eventId: e.target.dataset.eid };
+        await fetch('/api/clear', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        load();
+      }
+      if (e.target.id === 'clearAll') {
+        if (!confirm('Delete ALL visit logs and actions? This cannot be undone.')) return;
+        await fetch('/api/clear', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ all: true }) });
+        load();
+      }
+    });
+    load();
+  </script>
+</body>
+</html>

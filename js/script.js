@@ -1,6 +1,95 @@
 "use strict";
 
 /**
+ * Visit logging (skipped for the owner once the visits dashboard key is saved)
+ */
+/**
+ * Visit logging. Skipped for: the owner (any device that has opened /visits),
+ * and localhost/dev so testing never counts.
+ */
+try {
+  const isOwner = localStorage.getItem("visits_owner");
+  const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+  window.__track = () => {}; // no-op unless tracking is active
+  if (!isOwner && !isLocal) {
+    let vid = localStorage.getItem("visitor_id");
+    if (!vid) {
+      vid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem("visitor_id", vid);
+    }
+    const send = (url, payload) => {
+      const body = JSON.stringify({ path: location.pathname, visitorId: vid, ...payload });
+      if (navigator.sendBeacon) navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+      else fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
+    };
+    window.__track = (type, detail) => send("/api/event", { type, detail });
+
+    send("/api/visit", {
+      referrer: document.referrer,
+      screen: `${window.screen.width}x${window.screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    });
+
+    // Click tracking: resume downloads, project links, contact links
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest && e.target.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href") || "";
+      if (a.hasAttribute("download") || /Resume_Silva\.pdf/i.test(href)) {
+        window.__track("resume_download", href);
+      } else if (a.classList.contains("card-link") || (a.closest(".project-card") && /^https?:/i.test(href))) {
+        const card = a.closest(".project-card");
+        const name = card && card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : href;
+        window.__track("project_click", name);
+      } else if (/^mailto:|^tel:|linkedin\.com\/in|github\.com\/mattxslv/i.test(href)) {
+        window.__track("contact_click", href.replace(/^mailto:|^tel:/, ""));
+      }
+    }, true);
+
+    // Engagement: time on page + max scroll depth, sent when leaving
+    let maxScroll = 0;
+    const started = Date.now();
+    window.addEventListener("scroll", () => {
+      const doc = document.documentElement;
+      const pct = Math.round((window.scrollY + window.innerHeight) / doc.scrollHeight * 100);
+      if (pct > maxScroll) maxScroll = Math.min(pct, 100);
+    }, { passive: true });
+    window.addEventListener("pagehide", () => {
+      const seconds = Math.round((Date.now() - started) / 1000);
+      if (seconds >= 3) send("/api/event", { type: "engagement", seconds, scrollPct: maxScroll });
+    });
+  }
+} catch (_) {}
+
+/**
+ * Hidden owner entrance: clicking/tapping the About Me tag opens the visits dashboard.
+ * Clicking the hero name marks this device as the owner (excluded from logging).
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  const tag = document.getElementById("aboutTag");
+  if (tag) tag.addEventListener("click", () => { location.href = "/visits"; });
+
+  const heroName = document.getElementById("heroName");
+  if (heroName) {
+    heroName.style.cursor = "default";
+    heroName.addEventListener("click", () => {
+      const already = localStorage.getItem("visits_owner");
+      localStorage.setItem("visits_owner", "1");
+      window.__track = () => {};
+      const toast = document.createElement("div");
+      toast.textContent = already ? "It's you! (already excluded)" : "It's you! Your visits won't be counted anymore.";
+      toast.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:#151a23;color:#e6e8ee;border:1px solid #31427a;border-radius:10px;padding:10px 18px;font-size:14px;z-index:9999;opacity:0;transition:opacity .25s ease, transform .25s ease;box-shadow:0 8px 24px rgba(0,0,0,.4)";
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => { toast.style.opacity = "1"; toast.style.transform = "translateX(-50%) translateY(0)"; });
+      setTimeout(() => {
+        toast.style.opacity = "0"; toast.style.transform = "translateX(-50%) translateY(8px)";
+        setTimeout(() => toast.remove(), 300);
+      }, 2600);
+    });
+  }
+});
+
+/**
  * Theme toggle (persists via localStorage, respects system preference)
  */
 
