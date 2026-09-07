@@ -6,7 +6,7 @@ Check out the live version of the app here: [Live Demo](https://devfolio-silva.v
 
 
 ## Description
-This portfolio website showcases my development projects, skills, and professional experiences - including government platforms built at DICT Philippines such as the ASEAN AI Summit Registration Platform, PEMEDES Licensing Portal, PhilHealth Transparency Portal, and Startup PH.
+This portfolio website showcases my development projects, skills, and professional experiences - including government platforms built at DICT Philippines such as the D-TAP Accreditation Portal, ASEAN AI Summit Registration Platform, PEMEDES Licensing Portal, PhilHealth Transparency Portal, and Startup PH.
 
 ## Features
 - Modern single-page design with animated hero, gradient orbs, and typing effect.

@@ -26,6 +26,7 @@ EDUCATION & CERTIFICATIONS
 
 PROJECT CASE STUDIES (use these for deep-dive questions)
 Government:
+- D-TAP Accreditation Portal (https://dtap.dict.gov.ph/): official DICT Cybersecurity Bureau platform for accrediting VAPT and ISMS cybersecurity service providers under RA 12009. Multi-stage application review from service provider submission through evaluator and lead evaluator review, division chief endorsement, director approval, and certificate issuance. Gemini-powered (Vertex AI) document validation. Built with Next.js 15, TypeScript, React 19, Tailwind CSS, PostgreSQL (Cloud SQL), and deployed on Google Cloud Run.
 - ASEAN AI Summit Registration Platform (https://asean-summit-registration.vercel.app/): official registration site for the ASEAN AI Summit on MSME Growth 2026 under the Philippines' 2026 ASEAN Chairmanship. Delegate registration with MSME and General Attendee tracks, live odometer countdown, scroll-reveal animations, an AI assistant with a registration track finder, and hybrid onsite/virtual participation flows. Built with Tailwind CSS and vanilla JavaScript, deployed on Vercel.
 - PEMEDES Licensing Portal (https://register.pemedes.gov.ph/): licensing and compliance portal for Private Express and Messengerial Delivery Service operators and riders. Online registration, verification, document workflows, and role-based application review. Built with Next.js and Cloud SQL.
 - PhilHealth Transparency Portal (https://philhealth.open.gov.ph): public transparency platform for healthcare fund information and institutional data, strengthening accountability.
@@ -52,7 +53,7 @@ SKILLS
 
 FIT ASSESSMENT GUIDE
 When a visitor describes a need, map it to Matthew's proof:
-- Government/LGU portals, licensing, registration systems -> PEMEDES, ASEAN Summit, Startup PH, PhilHealth
+- Government/LGU portals, licensing, registration, accreditation systems -> D-TAP, PEMEDES, ASEAN Summit, Startup PH, PhilHealth
 - Membership/certificate/admin systems -> IBP QC Certificate Management System
 - AI chatbots and integrations -> Phoenix, TaskBot AI, and the AI assistants on this site and the ASEAN site
 - Business websites and web apps -> the full personal project portfolio
