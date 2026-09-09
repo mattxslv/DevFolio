@@ -250,17 +250,24 @@ backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smo
 const menuBtn = document.getElementById("menu-btn");
 const navLinksWrap = document.getElementById("nav-links");
 
-menuBtn.addEventListener("click", () => {
-  const open = navLinksWrap.classList.toggle("open");
+const setMenu = (open) => {
+  navLinksWrap.classList.toggle("open", open);
   menuBtn.querySelector(".material-symbols-outlined").textContent = open ? "close" : "menu";
+};
+
+menuBtn.addEventListener("click", () => {
+  setMenu(!navLinksWrap.classList.contains("open"));
 });
 
-navLinks.forEach((link) =>
-  link.addEventListener("click", () => {
-    navLinksWrap.classList.remove("open");
-    menuBtn.querySelector(".material-symbols-outlined").textContent = "menu";
-  })
-);
+navLinks.forEach((link) => link.addEventListener("click", () => setMenu(false)));
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") setMenu(false);
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".navbar")) setMenu(false);
+});
 
 /**
  * Typing animation
