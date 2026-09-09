@@ -334,6 +334,62 @@ document
 const filterBtns = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 
+/**
+ * Collapsible project grid - shows the first two rows with a fade,
+ * expands via the arrow button. Re-collapses when a filter changes.
+ */
+
+const gridWrap = document.getElementById("project-grid-wrap");
+const showMoreWrap = document.querySelector(".show-more-wrap");
+const showMoreBtn = document.getElementById("show-more-btn");
+const showMoreText = document.getElementById("show-more-text");
+const COLLAPSED_COUNT = 6;
+let gridExpanded = false;
+
+const visibleCards = () => [...projectCards].filter((c) => !c.classList.contains("hide"));
+
+function updateGridCollapse() {
+  const cards = visibleCards();
+
+  if (cards.length <= COLLAPSED_COUNT) {
+    gridWrap.classList.remove("collapsed");
+    gridWrap.style.maxHeight = "";
+    showMoreWrap.style.display = "none";
+    return;
+  }
+
+  showMoreWrap.style.display = "";
+  showMoreBtn.setAttribute("aria-expanded", String(gridExpanded));
+  showMoreText.textContent = gridExpanded ? "Show less" : `Show all ${cards.length} projects`;
+
+  if (gridExpanded) {
+    gridWrap.classList.remove("collapsed");
+    gridWrap.style.maxHeight = `${gridWrap.scrollHeight}px`;
+    gridWrap.addEventListener("transitionend", function clear(e) {
+      if (e.propertyName === "max-height" && gridExpanded) gridWrap.style.maxHeight = "";
+      gridWrap.removeEventListener("transitionend", clear);
+    });
+  } else {
+    const lastVisible = cards[COLLAPSED_COUNT - 1];
+    gridWrap.classList.add("collapsed");
+    gridWrap.style.maxHeight = `${lastVisible.offsetTop + lastVisible.offsetHeight}px`;
+  }
+
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+}
+
+showMoreBtn.addEventListener("click", () => {
+  gridExpanded = !gridExpanded;
+  if (!gridExpanded) {
+    document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+  }
+  updateGridCollapse();
+});
+
+window.addEventListener("resize", updateGridCollapse);
+window.addEventListener("load", updateGridCollapse);
+updateGridCollapse();
+
 filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     filterBtns.forEach((b) => b.classList.remove("active"));
@@ -354,6 +410,9 @@ filterBtns.forEach((btn) => {
         );
       }
     });
+
+    gridExpanded = false;
+    updateGridCollapse();
   });
 });
 

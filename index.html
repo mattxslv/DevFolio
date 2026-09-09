@@ -289,7 +289,8 @@
           <button class="filter-btn" data-filter="personal">Personal</button>
         </div>
 
-        <div class="project-grid" id="project-grid">
+        <div class="project-grid-wrap" id="project-grid-wrap">
+          <div class="project-grid" id="project-grid">
 
           <!-- D-TAP -->
           <article class="project-card" data-category="gov">
@@ -691,6 +692,14 @@
             </div>
           </article>
 
+        </div>
+        </div>
+
+        <div class="show-more-wrap">
+          <button class="show-more-btn" id="show-more-btn" type="button" aria-expanded="false" aria-controls="project-grid-wrap">
+            <span id="show-more-text">Show all projects</span>
+            <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </button>
         </div>
       </div>
     </section>
