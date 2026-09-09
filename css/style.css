@@ -72,8 +72,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
-  overflow-x: hidden;
-  overscroll-behavior-y: none;
+  overflow-x: clip;
+  overscroll-behavior: none;
 }
 
 body {
@@ -81,7 +81,8 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overscroll-behavior: none;
   transition: background 0.4s ease, color 0.4s ease;
 }
 
@@ -1364,7 +1365,7 @@ button {
 =============================================*/
 
 .skills-marquee {
-  overflow: hidden;
+  overflow: clip;
   margin-bottom: 64px;
   mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
