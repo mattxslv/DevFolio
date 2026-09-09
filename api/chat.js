@@ -20,7 +20,7 @@ WORK EXPERIENCE
 
 EDUCATION & CERTIFICATIONS
 - BS in Information Technology, Polytechnic University of the Philippines (2023-2025)
-- Diploma in ICT, Polytechnic University of the Philippines (2020-2023)
+- Diploma in ICT, Polytechnic University of the Philippines (2019-2023)
 - Senior High School TVL Track (ICT), Diliman College (2017-2019)
 - TESDA NC II Computer Systems Servicing; TESDA NC III Java Programming
 
