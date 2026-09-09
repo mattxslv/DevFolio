@@ -12,7 +12,11 @@ const MIME = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript
 
 http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
-  const clean = url.pathname.replace(/\/+$/, "") || "/";
+  let pathname;
+  try { pathname = decodeURIComponent(url.pathname); }
+  catch { res.writeHead(400); res.end("invalid URL"); return; }
+  if (pathname.split("/").includes("..")) { res.writeHead(400); res.end("invalid path"); return; }
+  const clean = pathname.replace(/\/+$/, "") || "/";
 
   if (clean.startsWith("/api/")) {
     const handlerPath = path.join(__dirname, clean + ".js");

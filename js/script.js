@@ -214,21 +214,18 @@ window.addEventListener("load", () => {
 });
 
 /**
- * Navbar - scrolled state, scroll progress, active link highlighting
+ * Navbar - scrolled state, active link highlighting
  */
 
 const navbar = document.getElementById("navbar");
-const scrollProgress = document.getElementById("scroll-progress");
 const backTop = document.getElementById("back-top");
 const navLinks = document.querySelectorAll(".nav-link");
 const sections = [...document.querySelectorAll("section[id]")];
 
 const onScroll = () => {
   const y = window.scrollY;
-  const max = document.documentElement.scrollHeight - window.innerHeight;
 
   navbar.classList.toggle("scrolled", y > 20);
-  scrollProgress.style.width = `${max > 0 ? (y / max) * 100 : 0}%`;
   backTop.classList.toggle("show", y > 600);
 
   // Active section highlighting
@@ -331,34 +328,6 @@ document
   .forEach((el) => revealObserver.observe(el));
 
 /**
- * Animated stat counters
- */
-
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = Number(el.dataset.target);
-      const duration = 1400;
-      const start = performance.now();
-
-      const tick = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * target);
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      counterObserver.unobserve(el);
-    });
-  },
-  { threshold: 0.6 }
-);
-
-document.querySelectorAll(".counter").forEach((el) => counterObserver.observe(el));
-
-/**
  * Project filtering
  */
 
@@ -434,14 +403,6 @@ if (marqueeTrack) {
 if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero content drifts up and fades as you scroll away
-  gsap.to(".hero-content", {
-    yPercent: -18,
-    opacity: 0,
-    ease: "none",
-    scrollTrigger: { trigger: ".hero", start: "top top", end: "70% top", scrub: true },
-  });
-
   // Portrait moves slower than the page (classic parallax depth)
   gsap.to(".hero-visual", {
     yPercent: 14,
@@ -462,13 +423,6 @@ if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-
     y: 24,
     ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "25% top", scrub: true },
-  });
-
-  // About stats drift up slightly faster than the text column
-  gsap.from(".stats-grid", {
-    y: 70,
-    ease: "none",
-    scrollTrigger: { trigger: "#about", start: "top bottom", end: "center 60%", scrub: true },
   });
 
   // Section tags get a small scroll-linked lift

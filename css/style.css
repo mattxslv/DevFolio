@@ -164,21 +164,6 @@ button {
 }
 
 /*=============================================
-  SCROLL PROGRESS
-=============================================*/
-
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: var(--gradient);
-  z-index: 999;
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
-}
-
-/*=============================================
   NAVBAR
 =============================================*/
 
@@ -808,8 +793,8 @@ button {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 56px;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
   align-items: center;
 }
 
@@ -819,96 +804,65 @@ button {
   font-size: 1.02rem;
 }
 
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
 .about-text strong {
   color: var(--text);
 }
 
-.about-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 26px;
+.about-facts {
+  border-top: 1px solid var(--border);
 }
 
-.meta-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+.fact-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px;
+  align-items: baseline;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.3s ease;
 }
 
-.meta-chip:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.fact-row:hover {
+  border-bottom-color: var(--accent);
 }
 
-.meta-chip .material-symbols-outlined {
-  font-size: 18px;
+.fact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--accent-2);
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.stat-card {
-  position: relative;
-  padding: 30px 24px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  overflow: hidden;
-  transition: transform 0.35s var(--ease-out), border-color 0.35s ease;
-}
-
-.stat-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(34, 211, 238, 0.07);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--border-strong);
-}
-
-.stat-card:hover::before {
-  opacity: 1;
-}
-
-.stat-value {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 700;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1.1;
-}
-
-.stat-label {
-  margin-top: 6px;
-  font-size: 0.88rem;
-  color: var(--text-muted);
+.fact-value {
+  font-size: 0.96rem;
   font-weight: 500;
+  color: var(--text);
+}
+
+.fact-link {
+  transition: color 0.25s ease;
+}
+
+.fact-link:hover {
+  color: var(--accent-2);
 }
 
 @media (max-width: 880px) {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fact-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 }
 
@@ -950,8 +904,8 @@ button {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fill, minmax(min(460px, 100%), 1fr));
+  gap: 32px;
 }
 
 .project-card {
@@ -1030,11 +984,11 @@ button {
 }
 
 .card-body {
-  padding: 24px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 12px;
+  gap: 14px;
 }
 
 .card-tag {
@@ -1085,13 +1039,13 @@ button {
 
 .card-title {
   font-family: var(--font-display);
-  font-size: 1.22rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .card-desc {
-  font-size: 0.9rem;
+  font-size: 0.94rem;
   color: var(--text-muted);
   flex: 1;
 }
@@ -1189,24 +1143,22 @@ button {
 
 .timeline {
   position: relative;
-  padding-left: 28px;
+  padding-left: 32px;
 }
 
 .timeline::before {
   content: "";
   position: absolute;
   left: 5px;
-  top: 6px;
-  bottom: 6px;
-  width: 2px;
-  background: var(--accent);
-  opacity: 0.5;
-  border-radius: 2px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent) 0%, var(--border-strong) 55%, transparent 100%);
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 34px;
+  padding-bottom: 38px;
 }
 
 .timeline-item:last-child {
@@ -1216,29 +1168,36 @@ button {
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -28px;
-  top: 6px;
-  width: 12px;
-  height: 12px;
+  left: -31px;
+  top: 7px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--bg);
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15);
-  transition: box-shadow 0.3s ease;
+  border: 2px solid var(--accent);
+  transition: background 0.3s ease;
 }
 
 .timeline-item:hover::before {
-  box-shadow: 0 0 0 7px rgba(34, 211, 238, 0.22);
+  background: var(--accent);
+}
+
+.timeline-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 20px;
+  flex-wrap: wrap;
 }
 
 .timeline-date {
-  display: inline-block;
+  margin-left: auto;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent-2);
-  margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .timeline-role {
@@ -1250,21 +1209,21 @@ button {
 .timeline-org {
   font-size: 0.9rem;
   color: var(--text-muted);
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 .cert-list {
-  margin-top: 44px;
+  margin-top: 64px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 24px;
 }
 
 .cert-card {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 18px 20px;
+  gap: 16px;
+  padding: 22px 26px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--surface);
@@ -1272,7 +1231,7 @@ button {
 }
 
 .cert-card:hover {
-  transform: translateX(6px);
+  transform: translateY(-4px);
   border-color: var(--accent);
 }
 
